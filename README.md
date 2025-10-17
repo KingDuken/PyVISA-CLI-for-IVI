@@ -2,7 +2,7 @@
 
 This is a straightforward CLI written in Python to provide remote access for reading and configuring your instrumentation devices. Each command has a docstring that talks about what the command does, what arguments it needs/takes, and an example. If you need specifics on what your instrumentation device supports, please refer to its user manual. This code provides mostly universal commands for each instrumentation device type, i.e. multimeter, oscilloscopes, etc.
 
-**Make sure you select your device first (using the "deviceselect" command) before running other commands.**
+**Make sure you select your device first (using the "deviceselect" command) before running other commands. If you need to know the device IDs your PC is detecting before device selection, do the "devicelist" command first.**
 
 ### Devices Supported:
 
