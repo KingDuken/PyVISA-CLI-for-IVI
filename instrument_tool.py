@@ -3,12 +3,8 @@ import sys
 import os
 import csv
 import time
-import readline
 import pyvisa
 import pyvisa_py
-
-# Optional: history file support
-HISTORY_FILE = os.path.expanduser("~/.instrument_tool_history")
 
 class Console(cmd.Cmd):
     """
@@ -43,11 +39,7 @@ class Console(cmd.Cmd):
 
     def __init__(self):
         super().__init__()
-        # Load history (if supported)
-        try:
-            readline.read_history_file(HISTORY_FILE)
-        except Exception:
-            pass
+        pass
 
     # -----------------------
     # Device management
@@ -2130,19 +2122,6 @@ class Console(cmd.Cmd):
     # Misc / Exit
     # -----------------------
     def do_exit(self, arg):
-        """
-        Exits the console and closes the instrument connection.
-
-        Saves command history before exiting.
-
-        Usage: exit
-        """
-        # Save history
-        try:
-            readline.write_history_file(HISTORY_FILE)
-        except Exception:
-            pass
-
         if self.instrument:
             try:
                 print(f"Closing connection to {self.selected_device_id}...")
@@ -2157,19 +2136,6 @@ class Console(cmd.Cmd):
         """Handles EOF (Ctrl+D) as an exit command."""
         print()
         return self.do_exit(arg)
-
-    def postloop(self):
-        """Cleanup function called after the command loop finishes."""
-        # Cleanup on loop exit (if any)
-        if self.instrument:
-            try:
-                self.instrument.close()
-            except Exception:
-                pass
-        try:
-            readline.write_history_file(HISTORY_FILE)
-        except Exception:
-            pass
 
 # -----------------------
 # Main
