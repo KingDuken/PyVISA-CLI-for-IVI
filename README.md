@@ -18,6 +18,7 @@ This is a straightforward CLI written in Python to provide remote access for rea
 
 - pip install pyvisa
 - pip install pyvisa_py
+- Installation of NI's VISA library is necessary since pyvisa is simply a wrapper. Download that here: https://www.ni.com/en/support/downloads/drivers/download.ni-visa.html#575764
 
 ### Planned Features:
 
